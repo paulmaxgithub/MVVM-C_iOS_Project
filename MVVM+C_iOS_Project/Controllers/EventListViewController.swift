@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class EventListViewController: UIViewController {
     
@@ -26,7 +27,7 @@ class EventListViewController: UIViewController {
     }
     
     private func setupViews() {
-        ///Right Br Button
+        ///Right Bar Button Setup
         let image = UIImage(systemName: "plus.circle.fill")
         let barButtonItem = UIBarButtonItem(
             image: image, style: .plain, target: self, action: #selector(tappedRightBarButton))

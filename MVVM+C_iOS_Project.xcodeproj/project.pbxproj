@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		631687BF28F38F1F001DC286 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631687BE28F38F1F001DC286 /* UIColor+Ext.swift */; };
+		631687C328F45BCD001DC286 /* EventsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 631687C128F45BCC001DC286 /* EventsApp.xcdatamodeld */; };
+		631687C828F45F27001DC286 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631687C728F45F27001DC286 /* CoreDataManager.swift */; };
 		63C1056B287E1F94005E1ADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1056A287E1F94005E1ADD /* AppDelegate.swift */; };
 		63C10572287E1F94005E1ADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C10570287E1F94005E1ADD /* Main.storyboard */; };
 		63C10574287E1F9A005E1ADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C10573287E1F9A005E1ADD /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		631687BE28F38F1F001DC286 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		631687C228F45BCC001DC286 /* EventsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventsApp.xcdatamodel; sourceTree = "<group>"; };
+		631687C728F45F27001DC286 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		63C10567287E1F94005E1ADD /* MVVM+C_iOS_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM+C_iOS_Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C1056A287E1F94005E1ADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C10571287E1F94005E1ADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,48 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		631687C428F45BF8001DC286 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				63C10570287E1F94005E1ADD /* Main.storyboard */,
+				63C10575287E1F9A005E1ADD /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		631687C528F45C21001DC286 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				63C10581287E2F5C005E1ADD /* EventListCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		631687C628F45C2C001DC286 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				63C10583287E30A1005E1ADD /* EventListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		631687CB28F47E66001DC286 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				63C10573287E1F9A005E1ADD /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		631687CC28F47ECC001DC286 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				631687C728F45F27001DC286 /* CoreDataManager.swift */,
+				631687C128F45BCC001DC286 /* EventsApp.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		63C1055E287E1F93005E1ADD = {
 			isa = PBXGroup;
 			children = (
@@ -69,13 +115,12 @@
 			isa = PBXGroup;
 			children = (
 				63C10580287E2C15005E1ADD /* App Level */,
-				63C10581287E2F5C005E1ADD /* EventListCoordinator.swift */,
-				63C10583287E30A1005E1ADD /* EventListViewController.swift */,
+				631687CC28F47ECC001DC286 /* Core Data */,
+				631687C628F45C2C001DC286 /* Controllers */,
+				631687C528F45C21001DC286 /* Coordinators */,
 				631687C028F38F27001DC286 /* Extensions */,
-				63C10570287E1F94005E1ADD /* Main.storyboard */,
-				63C10573287E1F9A005E1ADD /* Assets.xcassets */,
-				63C10575287E1F9A005E1ADD /* LaunchScreen.storyboard */,
-				63C10578287E1F9A005E1ADD /* Info.plist */,
+				631687CB28F47E66001DC286 /* Resources */,
+				631687C428F45BF8001DC286 /* Storyboards */,
 			);
 			path = "MVVM+C_iOS_Project";
 			sourceTree = "<group>";
@@ -85,6 +130,7 @@
 			children = (
 				63C1056A287E1F94005E1ADD /* AppDelegate.swift */,
 				63C1057E287E282B005E1ADD /* AppCoordinator.swift */,
+				63C10578287E1F9A005E1ADD /* Info.plist */,
 			);
 			path = "App Level";
 			sourceTree = "<group>";
@@ -164,6 +210,8 @@
 				63C10584287E30A1005E1ADD /* EventListViewController.swift in Sources */,
 				631687BF28F38F1F001DC286 /* UIColor+Ext.swift in Sources */,
 				63C1056B287E1F94005E1ADD /* AppDelegate.swift in Sources */,
+				631687C328F45BCD001DC286 /* EventsApp.xcdatamodeld in Sources */,
+				631687C828F45F27001DC286 /* CoreDataManager.swift in Sources */,
 				63C10582287E2F5C005E1ADD /* EventListCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +436,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		631687C128F45BCC001DC286 /* EventsApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				631687C228F45BCC001DC286 /* EventsApp.xcdatamodel */,
+			);
+			currentVersion = 631687C228F45BCC001DC286 /* EventsApp.xcdatamodel */;
+			path = EventsApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 63C1055F287E1F93005E1ADD /* Project object */;
 }
