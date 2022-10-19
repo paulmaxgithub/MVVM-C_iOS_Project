@@ -20,14 +20,21 @@ final class AddEventCoordinator: Coordinator {
     }
     
     func start() {
+        let modalNavigationController = UINavigationController()
         let addEventViewController: AddEventViewController = .instantiate()
+        modalNavigationController.setViewControllers([addEventViewController], animated: false)
         let addEventViewModel = AddEventViewModel()
         addEventViewModel.coordinator = self
         addEventViewController.viewModel = addEventViewModel
-        navigationController.present(addEventViewController, animated: true)
+        navigationController.present(modalNavigationController, animated: true)
     }
     
     func didFinishAddEvent() {
         parentCoordinator?.childDidFinish(self)
+    }
+    
+    func dismissAddEvent() {
+        navigationController.dismiss(animated: true, completion: nil)
+        didFinishAddEvent()
     }
 }
