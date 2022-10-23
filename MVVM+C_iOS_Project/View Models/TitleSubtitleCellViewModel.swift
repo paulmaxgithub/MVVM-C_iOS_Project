@@ -5,7 +5,7 @@
 //  Created by PaulmaX on 18.10.22.
 //
 
-import Foundation
+import UIKit
 
 final class TitleSubtitleCellViewModel {
     
@@ -23,11 +23,13 @@ final class TitleSubtitleCellViewModel {
        return dateFormatter
     }()
     
+    private(set) var image: UIImage?
+    
     private(set) var type: CellType
     
-    private(set) var onCellUpdate: () -> Void = {}
+    private(set) var onCellUpdate: (() -> Void)?
     
-    init(title: String, subtitile: String, placeholder: String, type: CellType, onCellUpdate: @escaping () -> Void) {
+    init(title: String, subtitile: String, placeholder: String, type: CellType, onCellUpdate: (() -> Void)?) {
         self.title = title
         self.subtitle = subtitile
         self.placehoder = placeholder
@@ -42,6 +44,11 @@ final class TitleSubtitleCellViewModel {
     public func update(_ date: Date) {
         let dateString = dateFormatter.string(from: date)
         self.subtitle = dateString
-        onCellUpdate()
+        onCellUpdate?()
+    }
+    
+    public func update(_ image: UIImage) {
+        self.image = image
+        onCellUpdate?()
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class AddEventViewModel {
     
@@ -13,7 +14,12 @@ final class AddEventViewModel {
         case titleSubtitle(TitleSubtitleCellViewModel)
     }
     
-    public var coordinator: AddEventCoordinator?
+    private var nameCellViewModel:  TitleSubtitleCellViewModel?
+    private var dateCellViewModel:  TitleSubtitleCellViewModel?
+    private var imageCellViewModel: TitleSubtitleCellViewModel?
+    
+    //TODO: - Check with retain cicle (weak value) ⚠️
+    public weak var coordinator: AddEventCoordinator?
     
     private(set) var cells: [AddEventViewModel.Cell] = []
     
@@ -21,22 +27,27 @@ final class AddEventViewModel {
     
     public let title = "Add"
     
+    private let eventsCellBuilder:  EventsCellBuilder
+    private let coreDataManager:    CoreDataManager
+    
+    lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        return dateFormatter
+    }()
+    
+    init(eventsCellBuilder: EventsCellBuilder, coreDataManager: CoreDataManager) {
+        self.eventsCellBuilder = eventsCellBuilder
+        self.coreDataManager = coreDataManager
+    }
+    
     public func viewDidLoad() {
-        cells = [
-            .titleSubtitle(TitleSubtitleCellViewModel(title: "Name", subtitile: "", placeholder: "Add Your Name...", type: .text, onCellUpdate: {})),
-            .titleSubtitle(TitleSubtitleCellViewModel(title: "Date", subtitile: "", placeholder: "Select a Date...", type: .date, onCellUpdate: { [weak self] in
-                self?.onUpdate()
-            })),
-            .titleSubtitle(TitleSubtitleCellViewModel(title: "Background", subtitile: "", placeholder: "Select a Date...", type: .image, onCellUpdate: { [weak self] in
-                self?.onUpdate()
-            }))
-            
-        ]
+        setupCells()
         onUpdate()
     }
     
     public func viewDidDisappear() {
-        coordinator?.didFinishAddEvent()
+        coordinator?.didFinish()
     }
     
     public func numberOfRows() -> Int {
@@ -48,8 +59,14 @@ final class AddEventViewModel {
     }
     
     public func tappedDone() {
-        //TODO: ⚠️
-        coordinator?.dismissAddEvent()
+        guard let name = nameCellViewModel?.subtitle,
+              let dateString = dateCellViewModel?.subtitle,
+              let date = dateFormatter.date(from: dateString),
+              let image = imageCellViewModel?.image else { return }
+        
+        coreDataManager.saveEvent(name: name, date: date, image: image)
+
+        coordinator?.didFinishSaveEvent()
     }
     
     public func updateCell(indexPath: IndexPath, subtitle: String) {
@@ -57,5 +74,31 @@ final class AddEventViewModel {
         case .titleSubtitle(let titleSubtitleCellViewModel):
             titleSubtitleCellViewModel.update(subtitle)
         }
+    }
+    
+    public func didSelectRow(at indexPath: IndexPath) {
+        switch cells[indexPath.row] {
+        case .titleSubtitle(let titleSubtitleCellViewModel):
+            guard titleSubtitleCellViewModel.type == .image else { return }
+            coordinator?.showImagePicker { image in
+                titleSubtitleCellViewModel.update(image)
+            }
+        }
+    }
+}
+
+private extension AddEventViewModel {
+    func setupCells() {
+        nameCellViewModel = eventsCellBuilder.makeTitleSubtitleCellViewModel(.text)
+        dateCellViewModel = eventsCellBuilder.makeTitleSubtitleCellViewModel(.date) { [weak self] in
+            self?.onUpdate()
+        }
+        imageCellViewModel = eventsCellBuilder.makeTitleSubtitleCellViewModel(.image) { [weak self] in
+            self?.onUpdate()
+        }
+        
+        cells = [.titleSubtitle(nameCellViewModel!),
+                 .titleSubtitle(dateCellViewModel!),
+                 .titleSubtitle(imageCellViewModel!)]
     }
 }

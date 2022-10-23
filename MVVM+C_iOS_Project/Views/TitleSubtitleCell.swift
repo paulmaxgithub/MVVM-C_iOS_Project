@@ -45,6 +45,7 @@ final class TitleSubtitleCell: UITableViewCell {
         subtitleTextField.inputView = viewModel.type == .text ? nil : datePicker
         subtitleTextField.inputAccessoryView = viewModel.type == .text ? nil : toolbar
         photoImageView.isHidden = viewModel.type != .image
+        photoImageView.image = viewModel.image
         subtitleTextField.isHidden = viewModel.type == .image
         verticalStackView.spacing = viewModel.type == .image ? 15 : verticalStackView.spacing
     }

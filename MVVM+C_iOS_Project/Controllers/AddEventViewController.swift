@@ -31,6 +31,7 @@ final class AddEventViewController: UIViewController {
     
     private func setupViews() {
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(TitleSubtitleCell.self, forCellReuseIdentifier: "TitleSubtitleCell")
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.setContentOffset(.init(x: 0, y: -1), animated: false)
@@ -54,6 +55,7 @@ final class AddEventViewController: UIViewController {
     }
 }
 
+//MARK: - UITableViewDataSource
 extension AddEventViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfRows()
@@ -69,6 +71,14 @@ extension AddEventViewController: UITableViewDataSource {
             cell.subtitleTextField.delegate = self
             return cell
         }
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension AddEventViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
