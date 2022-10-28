@@ -26,6 +26,9 @@
 		63C1057F287E282B005E1ADD /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C1057E287E282B005E1ADD /* AppCoordinator.swift */; };
 		63C10582287E2F5C005E1ADD /* EventListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C10581287E2F5C005E1ADD /* EventListCoordinator.swift */; };
 		63C10584287E30A1005E1ADD /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C10583287E30A1005E1ADD /* EventListViewController.swift */; };
+		63E8C4F6290873DA000A359A /* EventCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8C4F5290873DA000A359A /* EventCellViewModel.swift */; };
+		63E8C4F8290877C0000A359A /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8C4F7290877C0000A359A /* EventCell.swift */; };
+		63E8C4FA29087E16000A359A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8C4F929087E16000A359A /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		63C1057E287E282B005E1ADD /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		63C10581287E2F5C005E1ADD /* EventListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCoordinator.swift; sourceTree = "<group>"; };
 		63C10583287E30A1005E1ADD /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
+		63E8C4F5290873DA000A359A /* EventCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellViewModel.swift; sourceTree = "<group>"; };
+		63E8C4F7290877C0000A359A /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		63E8C4F929087E16000A359A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,7 @@
 			children = (
 				631687BE28F38F1F001DC286 /* UIColor+Ext.swift */,
 				63A6735E28FDA49B008FA607 /* UIViewController+Ext.swift */,
+				63E8C4F929087E16000A359A /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -123,6 +130,7 @@
 				635D90FA28F4DFF3009E6896 /* EventListViewModel.swift */,
 				63A6736028FDA617008FA607 /* AddEventViewModel.swift */,
 				63A6736228FE02F5008FA607 /* TitleSubtitleCellViewModel.swift */,
+				63E8C4F5290873DA000A359A /* EventCellViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -139,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				63A6736428FE0370008FA607 /* TitleSubtitleCell.swift */,
+				63E8C4F7290877C0000A359A /* EventCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,14 +267,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				63A6736528FE0370008FA607 /* TitleSubtitleCell.swift in Sources */,
+				63E8C4F6290873DA000A359A /* EventCellViewModel.swift in Sources */,
 				63C1057F287E282B005E1ADD /* AppCoordinator.swift in Sources */,
 				63A6735D28FDA3A7008FA607 /* AddEventViewController.swift in Sources */,
 				63C10584287E30A1005E1ADD /* EventListViewController.swift in Sources */,
 				63A6735F28FDA49B008FA607 /* UIViewController+Ext.swift in Sources */,
+				63E8C4FA29087E16000A359A /* UIView+Ext.swift in Sources */,
 				63A6735B28FD9D84008FA607 /* AddEventCoordinator.swift in Sources */,
 				63A6736128FDA617008FA607 /* AddEventViewModel.swift in Sources */,
 				631687BF28F38F1F001DC286 /* UIColor+Ext.swift in Sources */,
 				63C1056B287E1F94005E1ADD /* AppDelegate.swift in Sources */,
+				63E8C4F8290877C0000A359A /* EventCell.swift in Sources */,
 				631687C328F45BCD001DC286 /* EventsApp.xcdatamodeld in Sources */,
 				635D90FB28F4DFF3009E6896 /* EventListViewModel.swift in Sources */,
 				631687C828F45F27001DC286 /* CoreDataManager.swift in Sources */,
