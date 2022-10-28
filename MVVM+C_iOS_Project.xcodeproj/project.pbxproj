@@ -29,6 +29,7 @@
 		63E8C4F6290873DA000A359A /* EventCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8C4F5290873DA000A359A /* EventCellViewModel.swift */; };
 		63E8C4F8290877C0000A359A /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8C4F7290877C0000A359A /* EventCell.swift */; };
 		63E8C4FA29087E16000A359A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8C4F929087E16000A359A /* UIView+Ext.swift */; };
+		63E8C4FC290C2CA6000A359A /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8C4FB290C2CA5000A359A /* Date+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		63E8C4F5290873DA000A359A /* EventCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCellViewModel.swift; sourceTree = "<group>"; };
 		63E8C4F7290877C0000A359A /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		63E8C4F929087E16000A359A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		63E8C4FB290C2CA5000A359A /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				631687BE28F38F1F001DC286 /* UIColor+Ext.swift */,
 				63A6735E28FDA49B008FA607 /* UIViewController+Ext.swift */,
 				63E8C4F929087E16000A359A /* UIView+Ext.swift */,
+				63E8C4FB290C2CA5000A359A /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				63A6736328FE02F5008FA607 /* TitleSubtitleCellViewModel.swift in Sources */,
 				639DB35D2905648F00241946 /* EventsCellBuilder.swift in Sources */,
 				639DB35B29049DA600241946 /* ImagePickerCoordinator.swift in Sources */,
+				63E8C4FC290C2CA6000A359A /* Date+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

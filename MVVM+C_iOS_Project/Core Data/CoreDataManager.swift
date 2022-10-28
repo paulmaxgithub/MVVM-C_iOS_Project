@@ -10,10 +10,12 @@ import CoreData
 
 final class CoreDataManager {
     
+    static let shared = CoreDataManager()
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let persistentContainer = NSPersistentContainer(name: "EventsApp")
         persistentContainer.loadPersistentStores { _, error in
-            print(error?.localizedDescription ?? "unknown error")
+            print(error?.localizedDescription ?? "Persistent Container Unknown Error")
         }
         return persistentContainer
     }()

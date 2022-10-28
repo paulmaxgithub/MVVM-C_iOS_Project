@@ -60,9 +60,11 @@ final class TitleSubtitleCell: UITableViewCell {
         toolbar.setItems([doneButton], animated: false)
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
+            datePicker.datePickerMode = .date
         } else {
             datePicker.datePickerMode = .date
         }
+        photoImageView.contentMode = .scaleAspectFill
         photoImageView.backgroundColor = .black.withAlphaComponent(0.4)
         photoImageView.layer.cornerRadius = 10
         photoImageView.layer.masksToBounds = true

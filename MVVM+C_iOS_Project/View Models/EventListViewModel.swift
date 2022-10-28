@@ -19,17 +19,16 @@ final class EventListViewModel {
     
     public var coordinator: EventListCoordinator?
     
-//    private let coreDataManager: CoreDataManager
+    private let coreDataManager: CoreDataManager
     
     var onUpdate = {}
     
-//    init(coreDataManager: CoreDataManager) {
-//        self.coreDataManager = coreDataManager
-//    }
+    init(coreDataManager: CoreDataManager = CoreDataManager.shared) {
+        self.coreDataManager = coreDataManager
+    }
     
     public func viewDidLoad() {
-        cells = [.event(EventCellViewModel()), .event(EventCellViewModel())]
-        onUpdate()
+        reload()
     }
     
     public func tappedAddEvent() {
@@ -42,5 +41,11 @@ final class EventListViewModel {
     
     public func cell(at indexPath: IndexPath) -> Cell {
         return cells[indexPath.row]
+    }
+    
+    public func reload() {
+        let events = coreDataManager.fetchEvents()
+        cells = events.map { .event(EventCellViewModel($0)) }
+        onUpdate()
     }
 }
