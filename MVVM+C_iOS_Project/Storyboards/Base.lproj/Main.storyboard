@@ -69,6 +69,41 @@
             </objects>
             <point key="canvasLocation" x="738" y="98"/>
         </scene>
+        <!--Event Detail View Controller-->
+        <scene sceneID="xOx-M4-XBc">
+            <objects>
+                <viewController storyboardIdentifier="EventDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6ZU-6N-wYa" customClass="EventDetailViewController" customModule="MVVM_C_iOS_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vnr-ce-hqW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iPR-VD-iHz">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="110" placeholderIntrinsicHeight="200" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TvE-A6-vJo" customClass="TimeRemainingStackview" customModule="MVVM_C_iOS_Project" customModuleProvider="target">
+                                <rect key="frame" x="152" y="348" width="110" height="200"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ubc-ba-3aI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TvE-A6-vJo" firstAttribute="centerY" secondItem="vnr-ce-hqW" secondAttribute="centerY" id="J0v-iH-ldU"/>
+                            <constraint firstAttribute="bottom" secondItem="iPR-VD-iHz" secondAttribute="bottom" id="SkB-1x-Ouf"/>
+                            <constraint firstItem="TvE-A6-vJo" firstAttribute="centerX" secondItem="vnr-ce-hqW" secondAttribute="centerX" id="Xn1-XE-kGh"/>
+                            <constraint firstItem="ubc-ba-3aI" firstAttribute="trailing" secondItem="iPR-VD-iHz" secondAttribute="trailing" id="dIn-iE-fyg"/>
+                            <constraint firstItem="iPR-VD-iHz" firstAttribute="leading" secondItem="ubc-ba-3aI" secondAttribute="leading" id="h2X-EO-Y1d"/>
+                            <constraint firstItem="iPR-VD-iHz" firstAttribute="top" secondItem="vnr-ce-hqW" secondAttribute="top" id="hPX-9R-5p8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="iPR-VD-iHz" id="ZmV-Jz-urf"/>
+                        <outlet property="timeRemainingStackView" destination="TvE-A6-vJo" id="ZeF-dJ-aJd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vzy-BN-BHv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1422" y="98"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="secondarySystemBackgroundColor">

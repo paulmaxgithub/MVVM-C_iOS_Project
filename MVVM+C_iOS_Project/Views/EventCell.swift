@@ -9,7 +9,7 @@ import UIKit
 
 final class EventCell: UITableViewCell {
     
-    private let timeRemainingLabels = [UILabel(), UILabel(), UILabel(), UILabel()]
+    private let timeRemainingStackview = TimeRemainingStackview()
     private let dateLabel           = UILabel()
     private let eventLabel          = UILabel()
     private var backgroundImageView = UIImageView()
@@ -26,13 +26,15 @@ final class EventCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        backgroundImageView.image = UIImage()
+    }
+    
     private func setupViews() {
-        (timeRemainingLabels + [dateLabel, eventLabel, backgroundImageView, verticalStackview]).forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
+        timeRemainingStackview.setup()
         
-        timeRemainingLabels.forEach {
-            $0.font = .systemFont(ofSize: 28, weight: .medium)
-            $0.textColor = .white
-        }
+        [dateLabel, eventLabel, backgroundImageView, verticalStackview].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
         
         eventLabel.font = .systemFont(ofSize: 34, weight: .bold)
         eventLabel.textColor = .white
@@ -46,7 +48,7 @@ final class EventCell: UITableViewCell {
         contentView.addSubview(backgroundImageView)
         contentView.addSubview(verticalStackview)
         contentView.addSubview(eventLabel)
-        timeRemainingLabels.forEach { verticalStackview.addArrangedSubview($0)}
+        verticalStackview.addArrangedSubview(timeRemainingStackview)
         verticalStackview.addArrangedSubview(UIView())
         verticalStackview.addArrangedSubview(dateLabel)
     }
@@ -62,8 +64,8 @@ final class EventCell: UITableViewCell {
     }
     
     public func update(with viewModel: EventCellViewModel) {
-        viewModel.timeRemainingString.enumerated().forEach {
-            timeRemainingLabels[$0.offset].text = $0.element
+        if let timeRemainingViewModel = viewModel.timeRemainingViewModel {
+            timeRemainingStackview.update(with: timeRemainingViewModel)
         }
         
         dateLabel.text  = viewModel.dateText

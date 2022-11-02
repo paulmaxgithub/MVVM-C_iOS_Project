@@ -83,9 +83,11 @@ final class TitleSubtitleCell: UITableViewCell {
             verticalStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: padding),
             verticalStackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -padding),
             verticalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
-            
-            photoImageView.heightAnchor.constraint(equalToConstant: 200)
         ])
+        
+        let heightAnchorPhotoImageViewConstraint = photoImageView.heightAnchor.constraint(equalToConstant: 200)
+        heightAnchorPhotoImageViewConstraint.priority = .required - 1
+        heightAnchorPhotoImageViewConstraint.isActive = true
     }
     
     @objc private func tappedDone() {

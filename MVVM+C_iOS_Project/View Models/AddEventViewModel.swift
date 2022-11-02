@@ -5,7 +5,6 @@
 //  Created by PaulmaX on 17.10.22.
 //
 
-import Foundation
 import UIKit
 
 final class AddEventViewModel {
@@ -36,7 +35,7 @@ final class AddEventViewModel {
         return dateFormatter
     }()
     
-    init(eventsCellBuilder: EventsCellBuilder, coreDataManager: CoreDataManager = CoreDataManager.shared) {
+    init(eventsCellBuilder: EventsCellBuilder, coreDataManager: CoreDataManager = .shared) {
         self.eventsCellBuilder = eventsCellBuilder
         self.coreDataManager = coreDataManager
     }

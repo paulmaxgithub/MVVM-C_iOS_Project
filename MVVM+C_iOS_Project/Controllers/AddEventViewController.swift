@@ -9,9 +9,9 @@ import UIKit
 
 final class AddEventViewController: UIViewController {
     
-    public var viewModel: AddEventViewModel!
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    public var viewModel: AddEventViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

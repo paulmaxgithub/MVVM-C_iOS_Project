@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 struct EventCellViewModel {
     
@@ -13,13 +14,23 @@ struct EventCellViewModel {
     private var cacheKey: String { event.objectID.description }
     private let imageQueue = DispatchQueue(label: "imageQueue", qos: .background)
     
+    private let date = Date()
+    
+    public var onSelect: (NSManagedObjectID) -> Void = { _ in }
+    
+    var timeRemainingViewModel: TimeRemainingViewModel? {
+        guard let eventDate = event.date,
+              let timeRemainingParts = date.timeRamaining(until: eventDate)?.components(separatedBy: ",")
+        else { return nil }
+        return TimeRemainingViewModel(timeRemainingParts: timeRemainingParts, mode: .cell)
+    }
+    
     private let event: Event
     init(_ event: Event) {
         self.event = event
     }
     
     var timeRemainingString: [String] {
-        let date = Date()
         guard let eventDate = event.date else { return [] }
         return date.timeRamaining(until: eventDate)?.components(separatedBy: ",") ?? []
     }
@@ -51,5 +62,9 @@ struct EventCellViewModel {
                 }
             }
         }
+    }
+    
+    public func didSelect() {
+        onSelect(event.objectID)
     }
 }
