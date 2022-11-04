@@ -31,6 +31,21 @@ final class EventListViewModel {
         reload()
     }
     
+    public func reload() {
+        DispatchQueue.main.async { [unowned self] in
+            EventCellViewModel.imageCache.removeAllObjects()
+            let events = coreDataManager.fetchEvents()
+            cells = events.map {
+                var eventCellViewModel = EventCellViewModel($0)
+                if let coordinator = coordinator {
+                    eventCellViewModel.onSelect = coordinator.onSelect
+                }
+                return .event(eventCellViewModel)
+            }
+            onUpdate()
+        }
+    }
+    
     public func tappedAddEvent() {
         coordinator?.startAddEvent()
     }
@@ -41,18 +56,6 @@ final class EventListViewModel {
     
     public func cell(at indexPath: IndexPath) -> Cell {
         return cells[indexPath.row]
-    }
-    
-    public func reload() {
-        let events = coreDataManager.fetchEvents()
-        cells = events.map {
-            var eventCellViewModel = EventCellViewModel($0)
-            if let coordinator = coordinator {
-                eventCellViewModel.onSelect = coordinator.onSelect
-            }
-            return .event(eventCellViewModel)
-        }
-        onUpdate()
     }
     
     public func didSelectRow(at indexPath: IndexPath) {

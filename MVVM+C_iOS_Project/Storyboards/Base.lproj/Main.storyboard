@@ -104,6 +104,36 @@
             </objects>
             <point key="canvasLocation" x="1422" y="98"/>
         </scene>
+        <!--Edit Event View Controller-->
+        <scene sceneID="9Rb-F7-uS9">
+            <objects>
+                <viewController storyboardIdentifier="EditEventViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="buR-aR-xL3" customClass="EditEventViewController" customModule="MVVM_C_iOS_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b6D-5o-ksH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RoB-gh-vrq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Xb-rs-jZq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RoB-gh-vrq" firstAttribute="top" secondItem="6Xb-rs-jZq" secondAttribute="top" id="G1i-Uz-u23"/>
+                            <constraint firstItem="6Xb-rs-jZq" firstAttribute="trailing" secondItem="RoB-gh-vrq" secondAttribute="trailing" id="GQz-0Z-hsj"/>
+                            <constraint firstItem="RoB-gh-vrq" firstAttribute="leading" secondItem="6Xb-rs-jZq" secondAttribute="leading" id="MHw-SJ-pCD"/>
+                            <constraint firstItem="6Xb-rs-jZq" firstAttribute="bottom" secondItem="RoB-gh-vrq" secondAttribute="bottom" id="cEP-Fr-UZa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="RoB-gh-vrq" id="g3V-Ie-qi6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yOA-s0-gzh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2107" y="98"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="secondarySystemBackgroundColor">

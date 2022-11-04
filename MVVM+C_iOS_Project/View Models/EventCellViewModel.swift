@@ -10,7 +10,7 @@ import CoreData
 
 struct EventCellViewModel {
     
-    private static let imageCache = NSCache<NSString, UIImage>()
+    public static let imageCache = NSCache<NSString, UIImage>()
     private var cacheKey: String { event.objectID.description }
     private let imageQueue = DispatchQueue(label: "imageQueue", qos: .background)
     

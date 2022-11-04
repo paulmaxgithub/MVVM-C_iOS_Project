@@ -1,17 +1,17 @@
 //
-//  AddEventViewController.swift
+//  EditEventViewController.swift
 //  MVVM+C_iOS_Project
 //
-//  Created by PaulmaX on 17.10.22.
+//  Created by PaulmaX on 3.11.22.
 //
 
 import UIKit
 
-final class AddEventViewController: UIViewController {
+final class EditEventViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    public var viewModel: AddEventViewModel!
+    public var viewModel: EditEventViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ final class AddEventViewController: UIViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension AddEventViewController: UITableViewDataSource {
+extension EditEventViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfRows()
     }
@@ -67,7 +67,7 @@ extension AddEventViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension AddEventViewController: UITableViewDelegate {
+extension EditEventViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelectRow(at: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -75,7 +75,7 @@ extension AddEventViewController: UITableViewDelegate {
 }
 
 //MARK: - UITextFieldDelegate
-extension AddEventViewController: UITextFieldDelegate {
+extension EditEventViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         guard let currnetText = textField.text else { return false }

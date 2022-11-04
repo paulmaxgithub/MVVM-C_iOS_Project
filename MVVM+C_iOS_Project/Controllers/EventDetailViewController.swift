@@ -20,9 +20,11 @@ final class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = .init(image: .init(systemName: "pencil"), style: .plain,
+                                                 target: viewModel, action: #selector(viewModel.editButtonTapped))
         viewModel.onUpdate = { [weak self] in
             guard let `self` = self,
-            let timeRemainingViewModel = self.viewModel.timeRemainingViewModel else { return }
+                  let timeRemainingViewModel = self.viewModel.timeRemainingViewModel else { return }
             self.backgroundImageView.image = self.viewModel.image
             self.timeRemainingStackView.update(with: timeRemainingViewModel)
         }
