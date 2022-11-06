@@ -28,7 +28,7 @@ final class EditEventViewModel {
     public let title = "Edit"
     
     private let eventsCellBuilder:  EventsCellBuilder
-    private let coreDataManager:    CoreDataManager
+    private let eventService:       EventServiceProtocol
     private let event:              Event
     
     lazy var dateFormatter: DateFormatter = {
@@ -37,9 +37,9 @@ final class EditEventViewModel {
         return dateFormatter
     }()
     
-    init(eventsCellBuilder: EventsCellBuilder, coreDataManager: CoreDataManager = .shared, event: Event) {
+    init(eventsCellBuilder: EventsCellBuilder, eventService: EventServiceProtocol = EventService(), event: Event) {
         self.eventsCellBuilder = eventsCellBuilder
-        self.coreDataManager = coreDataManager
+        self.eventService = eventService
         self.event = event
     }
     
@@ -66,7 +66,7 @@ final class EditEventViewModel {
               let date = dateFormatter.date(from: dateString),
               let image = imageCellViewModel?.image else { return }
         
-        coreDataManager.updateEvent(event: event, name: name, date: date, image: image)
+        eventService.perform(.update(event), EventService.EventInputData(name: name, date: date, image: image))
         coordinator?.didFinishUpdateEvent()
     }
     

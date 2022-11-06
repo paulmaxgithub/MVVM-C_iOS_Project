@@ -18,13 +18,13 @@ final class EventListViewModel {
     public let title = "Event"
     
     public var coordinator: EventListCoordinator?
-    
-    private let coreDataManager: CoreDataManager
+
+    private let eventService: EventServiceProtocol
     
     var onUpdate = {}
     
-    init(coreDataManager: CoreDataManager = .shared) {
-        self.coreDataManager = coreDataManager
+    init(eventService: EventServiceProtocol = EventService()) {
+        self.eventService = eventService
     }
     
     public func viewDidLoad() {
@@ -32,9 +32,8 @@ final class EventListViewModel {
     }
     
     public func reload() {
-        DispatchQueue.main.async { [unowned self] in
             EventCellViewModel.imageCache.removeAllObjects()
-            let events = coreDataManager.fetchEvents()
+            let events = eventService.getAllEvents()
             cells = events.map {
                 var eventCellViewModel = EventCellViewModel($0)
                 if let coordinator = coordinator {
@@ -43,7 +42,6 @@ final class EventListViewModel {
                 return .event(eventCellViewModel)
             }
             onUpdate()
-        }
     }
     
     public func tappedAddEvent() {

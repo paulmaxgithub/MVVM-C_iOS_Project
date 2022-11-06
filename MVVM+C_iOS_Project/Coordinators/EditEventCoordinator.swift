@@ -7,13 +7,17 @@
 
 import UIKit
 
+protocol EventUpdatingCoordinator {
+    func onUpdateEvent()
+}
+
 final class EditEventCoordinator: Coordinator {
     
     private(set) var childCoordinators: [Coordinator] = []
     
     private let navigationController: UINavigationController
     
-    public var parentCoordinator: EventDetailCoordinator?
+    public var parentCoordinator: (EventUpdatingCoordinator & Coordinator)?
     
     private let event: Event
     

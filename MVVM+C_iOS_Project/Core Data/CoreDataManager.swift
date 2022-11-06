@@ -24,48 +24,26 @@ final class CoreDataManager {
         persistentContainer.viewContext
     }
     
-    func saveEvent(name: String, date: Date, image: UIImage) {
-        let event = Event(context: moc)
-        event.setValue(name, forKey: "name")
-        event.setValue(date, forKey: "date")
-        
-        let resizedImage = image.sameAspectRatio(newHeight: 250)
-        let imageData = resizedImage.jpegData(compressionQuality: 0.5)
-        event.setValue(imageData, forKey: "image")
+    func get<T: NSManagedObject>(_ id: NSManagedObjectID) -> T? {
         do {
-            try moc.save()
-        } catch (let error) {
-            debugPrint(error.localizedDescription)
-        }
-    }
-    
-    func fetchEvents() -> [Event] {
-        do {
-            let fetchRequest = NSFetchRequest<Event>(entityName: "Event")
-            let events = try moc.fetch(fetchRequest)
-            return events
-        } catch (let error) {
-            debugPrint(error.localizedDescription)
-            return []
-        }
-    }
-    
-    func getEvent(_ id: NSManagedObjectID) -> Event? {
-        do {
-            return try moc.existingObject(with: id) as? Event
+            return try moc.existingObject(with: id) as? T
         } catch (let error) {
             debugPrint(error.localizedDescription)
         }
         return nil
     }
     
-    func updateEvent(event: Event, name: String, date: Date, image: UIImage) {
-        event.setValue(name, forKey: "name")
-        event.setValue(date, forKey: "date")
-        
-        let resizedImage = image.sameAspectRatio(newHeight: 250)
-        let imageData = resizedImage.jpegData(compressionQuality: 0.5)
-        event.setValue(imageData, forKey: "image")
+    func getAll<T: NSManagedObject>() -> [T] {
+        do {
+            let fetchRequest = NSFetchRequest<T>(entityName: "\(T.self)")
+            return try moc.fetch(fetchRequest)
+        } catch (let error) {
+            debugPrint(error.localizedDescription)
+            return []
+        }
+    }
+    
+    func save() {
         do {
             try moc.save()
         } catch (let error) {
